@@ -1,21 +1,5 @@
-function myFunction(){
+$("body").on("click", ".database-list li", function(e) {
 
-	document.getElementById('myDropdown').classList.toggle("show");
-}
-
-window.onclick = function(event) {
-
-	if(!event.target.matches('.dropbtn')) {
-
-
-		var dropdowns = document.getElementByClassName("drop-down-content");
-		var i;
-		for(i = 0; i<dropdowns.length; i++){
-			var openDropdown = dropdowns[i];
-
-			if(openDropdown.classList.contains('show')){
-				openDropdown.classList.remove('show');
-			}
-		}
-	}
-}
+	console.log(e.currentTarget.children);
+    
+});
