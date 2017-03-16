@@ -1,5 +1,10 @@
-$("body").on("click", ".database-list li", function(e) {
+$("body").on("click", ".database-list li i", function(e) {
 
-	console.log(e.currentTarget.children);
+	$(this).next().toggle();
+
+	$(this).children().toggle();
     
 });
+
+
+
