@@ -1,0 +1,24 @@
+{"db_1" : {
+		
+		"table_1" : [
+				"field_1",
+				"field_2"	
+			],
+		"table_2" : [
+				"field_1",
+				"field_2"	
+			]
+		},
+"db_2" : {
+
+		"table_1" : [
+				"field_1",
+				"field_2"	
+			],
+		"table_2" : [
+				"field_1",
+				"field_2"	
+			]
+	}
+
+}
