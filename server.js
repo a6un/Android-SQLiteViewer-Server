@@ -38,25 +38,26 @@ socketio.on("connection",function (socket) {
 	
 
     //Emit databases names
-    socket.on("get:database",function(data){
+    socket.on("get:databases",function(data){
     	console.log("[Interface] : list databases");
     	// ask service to emit then database names
-
-
+    	socket.broadcast.emit("get:databases");
 		
 	});
 
     //Emit table names from database given
-	socket.on("get:table",function(data){
+	socket.on("get:tables",function(data){
 		console.log("[Interface] : list tables");
-		//socket.emit("get:table",);
+		// ask service to emit then table names
+		socket.broadcast.emit("get:tables",data);
 	});
 
 
 	//Emit fields and data based on the table names from database given
 	socket.on("get:table:data",function(data){
 		console.log("[Interface] : list fields and data");
-		//socket.emit("get:table:data",);
+		// ask service to emit then data inside the tables
+		socket.broadcast.emit("get:table:data",data);
 	});
 
 
@@ -68,23 +69,29 @@ socketio.on("connection",function (socket) {
  	//Service Events 
 
  	socket.on("service:send:databases",function(data){
- 		console.log("[Service] : Sent Databases");
 
+ 		console.log("[Service] : Sent Databases"); 		
+ 		
 		// Emit/Send the databases to the Interface
+		socket.broadcast.emit("service:send:databases",data);
 
  	});
 
- 	socket.on("service:send:Tables",function(data){
+ 	socket.on("service:send:tables",function(data){
+
  		console.log("[Service] : Sent Tables");
 
-		// Emit/Send the tables to the Interface
+ 		// Emit/Send the tables to the Interface
+ 		socket.broadcast.emit("service:send:tables",data);		
 
  	});
 
- 	socket.on("service:send:fields and Data",function(data){
- 		console.log("[Service] : Sent fields and Data");
+ 	socket.on("service:send:data",function(data){
+
+ 		console.log("[Service] : Sent fields and Data");		
 
 		// Emit/Send the fields and data to the Interface
+		socket.broadcast.emit("service:send:data",data);
 
  	});
 
